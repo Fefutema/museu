@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Cadastro de obra</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+		rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+		rel="stylesheet" />
+</head>
+
+<body>
+	<h2>Edição de obras</h2>
+
+	<form method="POST" th:object="${obra}" th:action="@{/acervo/efetivarCadastro}" style="margin: 20px 0">
+		<input type="hidden" th:field="*{id}"/>
+		<div class="form-group col-xs-5">
+			<input type="text" class="form-control" placeholder="Nome do autor" th:field="*{nomeAutor}"/>
+		</div>
+		<div class="form-group  col-xs-5">
+			<input type="text" class="form-control" placeholder="Nome da obra" th:field="*{nome}"/>
+		</div>
+		<div class="form-group  col-xs-5">
+			<input type="text" class="form-control" placeholder="Descrição" th:field="*{descricao}"/>
+		</div>
+		<div class="form-group  col-xs-5">
+			<input type="text" class="form-control" placeholder="Nome da exposição" th:field="*{nomeExposicao}"/>
+		</div>
+		<div class="form-group  col-xs-5">
+			<button type="submit"class="btn btn-primary">Alterar Obra</button>
+		</div>
+	</form>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+
+</html>
