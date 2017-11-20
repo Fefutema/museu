@@ -14,9 +14,12 @@
 </head>
 
 <body>
+
+	<div th:include="fragments/menu :: menu"  style="margin-bottom: 65px;"></div>
+
 	<h2>Cadastro de obras</h2>
 
-	<form method="POST" th:object="${obra}" th:action="@{/acervo/efetivarCadastro}" style="margin: 20px 0">
+	<form method="POST" th:object="${obra}" th:action="@{/acervo/curador/efetivarCadastro}" style="margin: 20px 0">
 		<div class="form-group col-xs-5">
 			<input type="text" class="form-control" placeholder="Nome do autor" th:field="*{nomeAutor}"/>
 		</div>

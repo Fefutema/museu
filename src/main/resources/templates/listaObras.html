@@ -14,6 +14,9 @@
 </head>
 
 <body>
+	
+	<div th:include="fragments/menu :: menu"  style="margin-bottom: 65px;"></div>
+
 	<div class="panel panel-default" style="margin: 10px">
 		<div class="panel-heading">
 			<h1 class="panel-title">Lista de obras</h1>
@@ -38,7 +41,7 @@
 						<td th:text="${obra.descricao}"></td>
 						<td th:text="${obra.nomeExposicao}"></td>
 						<td>
-							<a th:href="@{'/acervo/editar-obra/' + ${obra.id}}">Editar</a>
+							<a th:href="@{'/acervo/curador/editar-obra/' + ${obra.id}}">Editar</a>
 							<a href="#" th:onclick="'javascript:openModal(' + ${obra.id} + ')'">Excluir</a>
 						</td>
 					</tr>
@@ -78,7 +81,7 @@
 
 <script>
 function openModal(id){
-	$('#excluirObraModal').attr('action', '/acervo/excluir-obra/' + id)
+	$('#excluirObraModal').attr('action', '/acervo/curador/excluir-obra/' + id)
 	$('#myModal').modal('toggle');
 	$('#myModal').modal('show');
 	

@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	
-	<title>Cadastro de obra</title>
+	<title>Edição de obra</title>
 	
 	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
 		rel="stylesheet" />
@@ -14,9 +14,12 @@
 </head>
 
 <body>
+	
+	<div th:include="fragments/menu :: menu"  style="margin-bottom: 65px;"></div>
+
 	<h2>Edição de obras</h2>
 
-	<form method="POST" th:object="${obra}" th:action="@{/acervo/efetivarCadastro}" style="margin: 20px 0">
+	<form method="POST" th:object="${obra}" th:action="@{/acervo/curador/efetivarCadastro}" style="margin: 20px 0">
 		<input type="hidden" th:field="*{id}"/>
 		<div class="form-group col-xs-5">
 			<input type="text" class="form-control" placeholder="Nome do autor" th:field="*{nomeAutor}"/>

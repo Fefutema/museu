@@ -31,7 +31,7 @@ public class AcervoController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/cadastrar-obra")
+	@GetMapping("/curador/cadastrar-obra")
 	public ModelAndView toCadastro() {
 		
 		ModelAndView modelAndView = new ModelAndView("cadastrarObra");
@@ -41,7 +41,7 @@ public class AcervoController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/efetivarCadastro")
+	@PostMapping("/curador/efetivarCadastro")
 	public String cadastrarObra(Obra obra) {
 		if(obra != null) {
 			this.obras.save(obra);
@@ -50,7 +50,7 @@ public class AcervoController {
 		return "redirect:/acervo/obras";
 	}
 	
-	@GetMapping("/editar-obra/{id}")
+	@GetMapping("/curador/editar-obra/{id}")
 	public ModelAndView editarObra(@PathVariable Long id) throws NotFoundException {
 		ModelAndView modelAndView = new ModelAndView("editarObra");
 		
@@ -65,7 +65,7 @@ public class AcervoController {
 		return modelAndView;
 	}
 	
-	@PostMapping("/excluir-obra/{id}")
+	@PostMapping("/curador/excluir-obra/{id}")
 	public String excluirObra(@PathVariable Long id) throws Exception {
 		
 		if(id != null) {

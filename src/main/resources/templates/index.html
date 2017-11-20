@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	
+	<title>Museu Home</title>
+	
+	<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+		rel="stylesheet" />
+	<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+		rel="stylesheet" />
+</head>
+
+<body>
+	<div th:include="fragments/menu :: menu"  style="margin-bottom: 65px;"></div>
+
+<h1>Museu Home</h1>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+
+</html>
