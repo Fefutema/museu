@@ -1,5 +1,6 @@
 package br.com.fatec.museu.controller;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.fatec.museu.model.Obra;
@@ -27,6 +29,26 @@ public class AcervoController {
 		ModelAndView modelAndView = new ModelAndView("listaObras");
 		
 		modelAndView.addObject("obras", obras.findAll());
+		
+		return modelAndView;
+	}
+	
+	@GetMapping("/curador/buscar-obra")
+	public ModelAndView buscarObras() {
+		
+		ModelAndView modelAndView = new ModelAndView("buscarObras");
+		
+		modelAndView.addObject("obras", new ArrayList<>());
+		
+		return modelAndView;
+	}
+	
+	@PostMapping("/curador/buscar-obra")
+	public ModelAndView buscarObras(@RequestParam String obra) {
+		
+		ModelAndView modelAndView = new ModelAndView("buscarObras");
+		
+		modelAndView.addObject("obras", this.obras.findByAutorOrName(obra));
 		
 		return modelAndView;
 	}
