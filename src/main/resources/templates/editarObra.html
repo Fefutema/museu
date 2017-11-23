@@ -17,23 +17,38 @@
 	
 	<div th:include="fragments/menu :: menu"  style="margin-bottom: 65px;"></div>
 
-	<h2>Edição de obras</h2>
+	<h2 class="text-center">Edição de obras</h2>
 
-	<form method="POST" th:object="${obra}" th:action="@{/acervo/curador/efetivarCadastro}" style="margin: 20px 0">
+	<form method="POST" th:object="${obra}" th:action="@{/acervo/curador/efetivarCadastro}" style="margin: 20px 200px">
 		<input type="hidden" th:field="*{id}"/>
-		<div class="form-group col-xs-5">
-			<input type="text" class="form-control" placeholder="Nome do autor" th:field="*{nomeAutor}"/>
+		<div class="form-group col-xs-12 row text-center">
+			<label class="col-sm-2 col-form-label">Nome do autor: </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" placeholder="Nome do autor" th:field="*{nomeAutor}"/>
+			</div>
 		</div>
-		<div class="form-group  col-xs-5">
-			<input type="text" class="form-control" placeholder="Nome da obra" th:field="*{nome}"/>
+		<div class="form-group  col-xs-12 row text-center">
+			<label class="col-sm-2 col-form-label">Nome da obra: </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" placeholder="Nome da obra" th:field="*{nome}"/>
+			</div>
 		</div>
-		<div class="form-group  col-xs-5">
-			<input type="text" class="form-control" placeholder="Descrição" th:field="*{descricao}"/>
+		<div class="form-group  col-xs-12 row text-center">
+			<label class="col-sm-2 col-form-label">Descrição da obra: </label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" placeholder="Descrição" th:field="*{descricao}"/>
+			</div>
 		</div>
-		<div class="form-group  col-xs-5">
-			<input type="text" class="form-control" placeholder="Nome da exposição" th:field="*{nomeExposicao}"/>
+		<div class="form-group  col-xs-12 row text-center">
+			<label class="col-sm-2 col-form-label">Selecione uma exposição:</label>
+			<div class="col-sm-8">
+				<select class="form-control" th:field="*{exposicao}">
+				  <option th:value="null">Sem exposição</option>
+				  <option th:each="expo : ${exposicoes}" th:value="${expo.id}" th:text="${expo.nome}"></option>
+				</select>
+			</div>
 		</div>
-		<div class="form-group  col-xs-5">
+		<div class="form-group  col-xs-12 text-center">
 			<button type="submit"class="btn btn-primary">Alterar Obra</button>
 		</div>
 	</form>

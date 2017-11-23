@@ -5,9 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Obra implements Serializable {
@@ -15,32 +16,32 @@ public class Obra implements Serializable {
 	private static final long serialVersionUID = 10L;
 
 	@Id
-	//@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(generator = "increment")
+	// @GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
-	
-	@Column(name="NOME_AUTOR")
+
+	@Column(name = "NOME_AUTOR")
 	private String nomeAutor;
-	
-	@Column(name="NOME_OBRA")
+
+	@Column(name = "NOME_OBRA")
 	private String nome;
-	
-	@Column(name="DESCRICAO")
+
+	@Column(name = "DESCRICAO")
 	private String descricao;
-	
-	@Column(name="NOME_EXPOSICAO")
-	private String nomeExposicao;
+
+	@ManyToOne
+	@JoinColumn(name = "EXPOSICAO_ID")
+	private Exposicao exposicao;
 
 	public Obra() {
 	}
 
-	public Obra(Long id, String nomeAutor, String nome, String descricao, String nomeExposicao) {
+	public Obra(Long id, String nomeAutor, String nome, String descricao) {
 		this.id = id;
 		this.nomeAutor = nomeAutor;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.nomeExposicao = nomeExposicao;
 	}
 
 	public Long getId() {
@@ -75,12 +76,12 @@ public class Obra implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public String getNomeExposicao() {
-		return nomeExposicao;
+	public Exposicao getExposicao() {
+		return exposicao;
 	}
 
-	public void setNomeExposicao(String nomeExposicao) {
-		this.nomeExposicao = nomeExposicao;
+	public void setExposicao(Exposicao exposicao) {
+		this.exposicao = exposicao;
 	}
 
 }

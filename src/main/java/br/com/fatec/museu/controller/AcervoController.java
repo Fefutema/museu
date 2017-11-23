@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.fatec.museu.model.Obra;
+import br.com.fatec.museu.repository.Exposicoes;
 import br.com.fatec.museu.repository.Obras;
 import javassist.NotFoundException;
 
@@ -22,6 +23,9 @@ public class AcervoController {
 
 	@Autowired
 	private Obras obras;
+	
+	@Autowired
+	private Exposicoes exposicoes;
 	
 	@GetMapping("/obras")
 	public ModelAndView listarObras() {
@@ -59,6 +63,7 @@ public class AcervoController {
 		ModelAndView modelAndView = new ModelAndView("cadastrarObra");
 		
 		modelAndView.addObject(new Obra());
+		modelAndView.addObject("exposicoes", this.exposicoes.findAll());
 		
 		return modelAndView;
 	}
@@ -83,6 +88,7 @@ public class AcervoController {
 		}
 		
 		modelAndView.addObject(obra.get());
+		modelAndView.addObject("exposicoes", this.exposicoes.findAll());
 		
 		return modelAndView;
 	}

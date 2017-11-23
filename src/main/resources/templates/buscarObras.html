@@ -46,7 +46,8 @@
 						<td th:text="${obra.nomeAutor}"></td>
 						<td th:text="${obra.nome}"></td>
 						<td th:text="${obra.descricao}"></td>
-						<td th:text="${obra.nomeExposicao}"></td>
+						<td th:if="${obra.exposicao} != null" th:text="${obra.exposicao.nome}"></td>
+						<td th:if="${obra.exposicao} == null" >Sem exposição</td>
 						<td>
 							<a th:href="@{'/acervo/curador/editar-obra/' + ${obra.id}}">Editar</a>
 							<a href="#" th:onclick="'javascript:openModal(' + ${obra.id} + ')'">Excluir</a>
